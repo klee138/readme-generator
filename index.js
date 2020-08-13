@@ -100,7 +100,7 @@ ${description}
         
 [Tests](#tests)
         
-[Contributions](#contributing)
+[Contributions](#contributions)
         
 ## Installation
         
