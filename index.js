@@ -1,6 +1,6 @@
 const fs = require("fs");
 const inquirer = require("inquirer");
-
+//const badge = ""
 async function getInfo (){
     inquirer
     .prompt([
@@ -53,32 +53,32 @@ async function getInfo (){
     ])
     .then(function(response){
         //const fileName = response.title.toLowerCase().split(' ').join('') + ".md";
-        const fileName = "readme.md"
+        const fileName = "./output/readme.md"
         const title = response.title.charAt(0).toUpperCase() + response.title.slice(1)
         console.log(title);
         const description = response.description
         const installation = response.installation
         const usage = response.usage
-        const license = response.license
+        const license = response.license.split(' ').join('%20')
         const contributing = response.contributing
         const tests = response.tests
         const username = response.username
         const email = response.email
         console.log(license);
-        if license === 'Apache' {
-            const badge = [![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
-        } /* else if license === 'MIT' {
-            const badge = [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
-        } else if license === 'GPL' {
-            const badge = [![License: GPL v3](https://img.shields.io/badge/License-GPLv3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0)
-        } else if license = 'none' {
+/*         if (license === 'Apache') {
+            const badge = "![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)"
+        } else if (license === 'MIT') {
+            const badge = "![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)"
+        } else if (license === 'GPL') {
+            const badge = "![License: GPL v3](https://img.shields.io/badge/License-GPLv3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0)"
+        } else if (license = 'none') {
             const badge = 'none'
         } */
-        
+        //console.log(badge)
         const userInput = `## ${title}
 ## License
 
-
+![License](https://img.shields.io/badge/License-${license}-blue.svg)
 
 ## Description
 
