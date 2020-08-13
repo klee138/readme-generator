@@ -14,11 +14,6 @@ async function getInfo (){
             message: "Please provide a description of the project",
             name: "description"
         },
-/*         {
-            type: "input",
-            message: "Please provide a table of contents",
-            name: "toc"
-        }, */
         {
             type: "input",
             message: "Please provide installation instructions",
@@ -33,7 +28,7 @@ async function getInfo (){
             type: "list",
             message: "Please choose a license type",
             name: "license",
-            choices: ['MIT', 'Apache', 'GPL']
+            choices: ['MIT', 'Apache', 'GPL', 'none']
         },
         {
             type: "input",
@@ -57,36 +52,60 @@ async function getInfo (){
         },
     ])
     .then(function(response){
-        const fileName = response.title.toLowerCase().split(' ').join('') + ".md";
-
+        //const fileName = response.title.toLowerCase().split(' ').join('') + ".md";
+        const fileName = "readme.md"
         const title = response.title.charAt(0).toUpperCase() + response.title.slice(1)
-        const upperLocation = response.location.charAt(0).toUpperCase() + response.location.slice(1)
-        const upperBio = response.bio.charAt(0).toUpperCase() + response.bio.slice(1)
-        const userInput = `# ${title}
+        console.log(title);
+        const description = response.description
+        const installation = response.installation
+        const usage = response.usage
+        const license = response.license
+        const contributing = response.contributing
+        const tests = response.tests
+        const username = response.username
+        const email = response.email
+        console.log(license);
+        if license === 'Apache' {
+            const badge = [![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
+        } /* else if license === 'MIT' {
+            const badge = [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+        } else if license === 'GPL' {
+            const badge = [![License: GPL v3](https://img.shields.io/badge/License-GPLv3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0)
+        } else if license = 'none' {
+            const badge = 'none'
+        } */
         
-## ${title}
+        const userInput = `## ${title}
+## License
+
+
 
 ## Description
-        
+
 ${description}
-        
+
 ## Table of Contents
+
+[Title](#title)
+
+[Description](#description)
         
-*[Installation][#installation]
+[Installation](#installation)
         
-*[Usage][#usage]
+[Usage](#usage)
         
-*[License][#license]
+[License](#license)
         
-*[Usage][#usage]
+[Usage](#usage)
         
-*[Tests][#tests]
+[Tests](#tests)
         
-*[Contributions][#contributions]
+[Contributions](#contributing)
         
 ## Installation
         
-${install}
+${installation}
+
 ## Usage
         
 ${usage}
@@ -97,7 +116,12 @@ ${tests}
         
 ## Contributions
         
-${contributing}`
+${contributing}
+
+## Questions
+
+[My github repo:](https://github.com/${username})
+If you have any questions, please reach out to me via email at ${email}`
 
         fs.writeFile(fileName, userInput, function(err){
             if(err){
