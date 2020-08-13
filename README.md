@@ -25,6 +25,9 @@ This project demonstrates the functionality of this readme.md generator. Inputs 
         
 [Contributions](#contributions)
         
+## Demonstration
+![Untitled_ Aug 13, 2020 5_24 PM (4)](https://user-images.githubusercontent.com/66339673/90193199-78362700-dd92-11ea-99ce-c06b8487fb49.gif)
+
 ## Installation
         
 This application requires Inquirer so this will need to be installed via NPM to allow the application to run properly.
