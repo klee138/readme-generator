@@ -28,7 +28,7 @@ async function getInfo (){
             type: "list",
             message: "Please choose a license type",
             name: "license",
-            choices: ['MIT', 'Apache', 'GPL', 'none']
+            choices: ['MIT', 'Apache', 'GPLv3', 'none']
         },
         {
             type: "input",
